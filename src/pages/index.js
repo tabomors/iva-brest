@@ -1,3 +1,6 @@
-import React from "react"
+import React from 'react';
+import HelloWorld from '../components/HelloWorld';
 
-export default () => <div>Hello world!</div>
+const IndexPage = () => <HelloWorld />;
+
+export default IndexPage;
