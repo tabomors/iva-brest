@@ -3,11 +3,13 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import styles from './Layout.module.css';
 
+const data = ['contacts', 'about', 'partners', 'catalog'];
+
 const Layout = () => {
   return (
     <>
-      <Header item="contacts" />
-      <p className={styles.layout}>Layout Module</p>
+      <Header menu={data} />
+      <p className={styles.layout}>Content</p>
       <Footer phone="+375259263378" />
     </>
   );

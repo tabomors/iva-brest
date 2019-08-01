@@ -1,19 +1,18 @@
 import React from 'react';
-//import styles from './Header.modules.css';
 import styles from './Header.module.css';
-const Header = props => {
-  let { item } = props;
 
+const Header = props => {
+  let { menu } = props;
+  let menuItem = menu.map(item => (
+    <li key={item}>
+      <a href="#">{item}</a>
+    </li>
+  ));
   return (
     <>
       <header className={styles.mainHeader}>
         <nav>
-          <ul>
-            <li>
-              <h1>Header</h1>
-              <h3>{item}</h3>
-            </li>
-          </ul>
+          <ul className={styles.mainHeaderList}>{menuItem}</ul>
         </nav>
       </header>
     </>
