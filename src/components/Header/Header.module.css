@@ -4,12 +4,13 @@
   display: flex;
   color: black;
   justify-content: space-between;
-  max-width: 1200px;
+  width: 85%;
   margin: auto;
   margin-top: 20px;
 }
 
 .main-header-nav {
+  padding: 15px;
   width: 65%;
   float: right;
 }

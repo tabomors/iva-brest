@@ -1,8 +1,5 @@
 /* NOTE: add here only global styles!!! */
 
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,700i,900&display=swap');
-
-
 html {
   background-color: black;
 }
@@ -13,7 +10,5 @@ a {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  font-size: 18px;
   color: white;
 }
