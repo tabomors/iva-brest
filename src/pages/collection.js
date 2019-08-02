@@ -1,22 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
 
 const CollectionPage = ({
   data: {
-    allImageSharp: { edges: imageEdges = [] },
+    allContentfulProduct: { edges: dressEdges = [] },
   },
 }) => {
-  if (!imageEdges.length) return <p>Вы ещё не добавили картинок</p>;
-  const images = imageEdges.map(({ node: { fixed } }) => fixed);
+  const nodes = dressEdges.map(({ node }) => node);
+  if (!nodes.length) return <p>На данный момент платьев нет</p>;
 
   return (
     <ul>
-      {images.map(imgData => {
+      {nodes.map(node => {
         return (
-          <li key={imgData.src}>
-            <Img fixed={imgData} />
+          <li key={node.id}>
+            <pre>{JSON.stringify(node, null, '\t')}</pre>
+            {/* TODO: replace it with gatsby-image in the future */}
+            <img src={node.picture.file.url} alt={node.name} width={300}/>
           </li>
         );
       })}
@@ -25,16 +26,17 @@ const CollectionPage = ({
 };
 
 const dataShape = PropTypes.shape({
-  allImageSharp: PropTypes.shape({
+  allContentfulProduct: PropTypes.shape({
     edges: PropTypes.arrayOf(
       PropTypes.shape({
         node: PropTypes.shape({
-          fixed: PropTypes.shape({
-            base64: PropTypes.string.isRequired,
-            height: PropTypes.number.isRequired,
-            src: PropTypes.string.isRequired,
-            srcSet: PropTypes.string.isRequired,
-            width: PropTypes.number.isRequired,
+          id: PropTypes.string.isRequired,
+          name: PropTypes.string.isRequired,
+          picture: PropTypes.shape({
+            file: PropTypes.shape({
+              fileName: PropTypes.string.isRequired,
+              url: PropTypes.string.isRequired,
+            }).isRequired,
           }).isRequired,
         }).isRequired,
       }).isRequired
@@ -47,13 +49,18 @@ CollectionPage.propTypes = {
 };
 
 export const query = graphql`
-  query GetCollectionImages {
-    allImageSharp {
+  query GetAllDresses {
+    allContentfulProduct(filter: { category: { eq: "dress" } }) {
       edges {
         node {
-          fixed {
-            ...GatsbyImageSharpFixed
+          name
+          picture {
+            file {
+              fileName
+              url
+            }
           }
+          id
         }
       }
     }
