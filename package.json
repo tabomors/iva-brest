@@ -12,16 +12,24 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "lint": "eslint ."
   },
   "dependencies": {
     "gatsby": "^2.13.45",
+    "gatsby-image": "^2.2.8",
+    "gatsby-plugin-sharp": "^2.2.9",
+    "gatsby-source-filesystem": "^2.1.8",
+    "gatsby-transformer-sharp": "^2.2.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
+    "@arkweid/lefthook": "^0.6.3",
     "eslint": "^6.1.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.6.1",
     "gh-pages": "^2.0.1",
     "mem": ">=4.0.0",
     "prettier": "^1.18.2",
