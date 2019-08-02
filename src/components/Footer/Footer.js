@@ -1,13 +1,11 @@
 import React from 'react';
 import styles from './Footer.module.css';
 
-const Footer = props => {
-  let { phone } = props;
+const Footer = () => {
   return (
     <footer className={styles.mainFooter}>
       <nav>
-        <h1>Footer</h1>
-        <h3>{phone}</h3>
+        <h3>iva-brest.ru</h3>
       </nav>
     </footer>
   );

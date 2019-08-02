@@ -1,7 +1,17 @@
 .main-header {
-  background-color: aqua;
-  color: red;
-  padding: 100px;
+  background-color: white;
+  padding: 25px;
+  display: flex;
+  color: black;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.main-header-nav {
+  width: 65%;
+  float: right;
 }
 
 .main-header-list {
