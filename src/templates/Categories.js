@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
-const CollectionPage = ({
+const Categories = ({
   data: {
-    allContentfulProduct: { edges: dressEdges = [] },
+    allContentfulProduct: { edges },
   },
 }) => {
-  const nodes = dressEdges.map(({ node }) => node);
-  if (!nodes.length) return <p>На данный момент платьев нет</p>;
+  const nodes = edges.map(({ node }) => node);
+  if (!nodes.length) return <p>На данный момент нет экземпляров этой категории</p>;
 
   return (
     <ul>
@@ -17,7 +17,7 @@ const CollectionPage = ({
           <li key={node.id}>
             <pre>{JSON.stringify(node, null, '\t')}</pre>
             {/* TODO: replace it with gatsby-image in the future */}
-            <img src={node.picture.file.url} alt={node.name} width={300}/>
+            <img src={node.picture.file.url} alt={node.name} width={300} />
           </li>
         );
       })}
@@ -44,13 +44,13 @@ const dataShape = PropTypes.shape({
   }).isRequired,
 });
 
-CollectionPage.propTypes = {
+Categories.propTypes = {
   data: dataShape,
 };
 
 export const query = graphql`
-  query GetAllDresses {
-    allContentfulProduct(filter: { category: { eq: "dress" } }) {
+  query GetProducts($slug: String) {
+    allContentfulProduct(filter: { category: { eq: $slug } }) {
       edges {
         node {
           name
@@ -61,10 +61,12 @@ export const query = graphql`
             }
           }
           id
+          category
+          slug
         }
       }
     }
   }
 `;
 
-export default CollectionPage;
+export default Categories;
