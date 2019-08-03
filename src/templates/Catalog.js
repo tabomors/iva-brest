@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
-const Categories = ({
+const Catalog = ({
   data: {
     allContentfulProduct: { edges },
   },
@@ -44,7 +44,7 @@ const dataShape = PropTypes.shape({
   }).isRequired,
 });
 
-Categories.propTypes = {
+Catalog.propTypes = {
   data: dataShape,
 };
 
@@ -69,4 +69,4 @@ export const query = graphql`
   }
 `;
 
-export default Categories;
+export default Catalog;

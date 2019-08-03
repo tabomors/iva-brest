@@ -32,19 +32,19 @@ exports.createPages = async ({ graphql, actions }) => {
   `);
 
   const categories = getCategories(edges);
-  const categoriesTemplate = path.resolve('./src/templates/Categories.js');
+  const catalogTemplate = path.resolve('./src/templates/Catalog.js');
 
   // Render all categories page
   createPage({
-    component: categoriesTemplate,
-    path: `/categories`,
+    component: catalogTemplate,
+    path: `/catalog`,
   });
 
   // Render each category page (e.g. /dress, /skirt)
   categories.forEach(category => {
     createPage({
-      component: categoriesTemplate,
-      path: `/categories/${category}/`,
+      component: catalogTemplate,
+      path: `/catalog/${category}/`,
       context: {
         slug: category,
       },
