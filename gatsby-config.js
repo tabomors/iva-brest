@@ -10,6 +10,7 @@ require('dotenv').config();
 
 
 module.exports = {
+  pathPrefix: '/iva-brest',
   plugins: [
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
