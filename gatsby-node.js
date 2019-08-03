@@ -25,6 +25,7 @@ exports.createPages = async ({ graphql, actions }) => {
             }
             id
             category
+            slug
           }
         }
       }
@@ -47,6 +48,19 @@ exports.createPages = async ({ graphql, actions }) => {
       path: `/catalog/${category}/`,
       context: {
         slug: category,
+      },
+    });
+  });
+
+  // Render product page (e.g. /dress/dress-0)
+  const productTemplate = path.resolve('./src/templates/Product.js');
+
+  edges.forEach(({ node: { category, slug } }) => {
+    createPage({
+      component: productTemplate,
+      path: `/${category}/${slug}`,
+      context: {
+        slug,
       },
     });
   });
