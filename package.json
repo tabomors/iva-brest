@@ -28,9 +28,7 @@
     "react-dom": "^16.8.6",
     "react-typography": "^0.16.19",
     "typography": "^0.16.19",
-    "typography-theme-bootstrap": "^0.16.19",
-    "typography-theme-funston": "^0.16.19",
-    "typography-theme-github": "^0.16.19"
+    "typography-theme-bootstrap": "^0.16.19"
   },
   "devDependencies": {
     "@arkweid/lefthook": "^0.6.3",

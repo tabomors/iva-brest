@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './Header.module.css';
 
 const Header = ({ menu }) => {
-  let menuItem = menu.map(item => (
+  const menuItem = menu.map(item => (
     <li key={item}>
       <a href="/">{item}</a>
     </li>
