@@ -8,8 +8,10 @@ const data = ['о нас', 'каталог', 'партнеры', 'контакт
 
 const Layout = ({ children }) => (
   <div className={styles.container}>
-    <Header menu={data} />
-    {children}
+    <div className={styles.content}>
+      <Header menu={data} />
+      <div>{children}</div>
+    </div>
     <Footer />
   </div>
 );

@@ -1,7 +1,5 @@
 .main-footer {
   padding: 25px 0;
-  position: fixed;
+  flex-shrink: 0;
   text-align: center;
-  width: 100%;
-  bottom: 0;
 }
