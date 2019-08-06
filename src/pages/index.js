@@ -1,6 +1,12 @@
 import React from 'react';
-import HelloWorld from '../components/HelloWorld';
+import Layout from '../components/Layout';
 
-const IndexPage = () => <HelloWorld />;
+const IndexPage = () => {
+  return (
+    <Layout>
+      <h1>Children content for layout</h1>
+    </Layout>
+  );
+};
 
 export default IndexPage;

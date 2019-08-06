@@ -1,0 +1,20 @@
+.main-header {
+  background-color: white;
+  padding: 25px;
+  display: flex;
+  color: black;
+  justify-content: space-between;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.main-header-nav {
+  padding: 15px;
+  width: 65%;
+}
+
+.main-header-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}

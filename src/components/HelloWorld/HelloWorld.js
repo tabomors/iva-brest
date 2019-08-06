@@ -1,5 +1,4 @@
 import React from 'react';
-
 // NOTE: please read about this approach here https://www.gatsbyjs.org/docs/css-modules/
 import styles from './HelloWorld.module.css';
 
