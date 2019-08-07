@@ -6,15 +6,17 @@ import styles from './Layout.module.css';
 
 const data = ['о нас', 'каталог', 'партнеры', 'контакты'];
 
-const Layout = ({ children }) => (
-  <div className={styles.container}>
-    <div className={styles.content}>
-      <Header menu={data} />
-      <div>{children}</div>
+const Layout = ({ children }) => {
+  return (
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <Header menu={data} />
+        <div>{children}</div>
+      </div>
+      <Footer />
     </div>
-    <Footer />
-  </div>
-);
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.element.isRequired,
