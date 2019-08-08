@@ -4,7 +4,12 @@ import Header from '../Header';
 import Footer from '../Footer';
 import styles from './Layout.module.css';
 
-const data = ['о нас', 'каталог', 'партнеры', 'контакты'];
+const data = [
+  { title: 'о нас', path: '/about' },
+  { title: 'каталог', path: '/catalog' },
+  { title: 'партнеры', path: '/partners' },
+  { title: 'контакты', path: '/contacts' },
+];
 
 const Layout = ({ children }) => {
   return (

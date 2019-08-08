@@ -1,19 +1,20 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './Header.module.css';
+import { Link } from 'gatsby';
 
 const Header = ({ menu }) => {
   const menuItem = menu.map(item => (
     <li key={item}>
-      <a href="/">{item}</a>
+      <Link to={item.path}>{item.title}</Link>
     </li>
   ));
   return (
     <>
       <header className={styles.mainHeader}>
-        <a href="/">
+        <Link to="/">
           <h1>logo</h1>
-        </a>
+        </Link>
         <nav className={styles.mainHeaderNav}>
           <ul className={styles.mainHeaderList}>{menuItem}</ul>
         </nav>
