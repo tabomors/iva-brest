@@ -4,11 +4,21 @@
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
 const path = require("path");
+const siteConfig = require('./config.js');
+
+console.log('siteConfig');
+console.log(siteConfig);
 
 // Load env variables
 require("dotenv").config();
 
 module.exports = {
+  siteMetadata: {
+    title: '123124',
+    phoneNumber: 'test',
+    menu: siteConfig.author.name
+  }
+  ,
   plugins: [
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
