@@ -1,9 +1,24 @@
 import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import ColumnLayout from '../components/ColumnLayout';
 
 const AboutPage = () => {
-  const leftColumn = <h1>About</h1>;
+  const data = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "logo/logo.jpg" }) {
+        childImageSharp {
+          fixed {
+            src
+          }
+        }
+      }
+    }
+  `);
+
+  const leftColumn = (
+    <img src={data.file.childImageSharp.fixed.src} alt="logo" />
+  );
 
   const head = 'О нас';
 
