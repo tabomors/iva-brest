@@ -7,7 +7,7 @@ import styles from './Layout.module.css';
 const data = [
   { title: 'о нас', path: '/about' },
   { title: 'каталог', path: '/catalog' },
-  { title: 'партнеры', path: '/partners' },
+  { title: 'партнеры', path: '/partner' },
   { title: 'контакты', path: '/contacts' },
 ];
 

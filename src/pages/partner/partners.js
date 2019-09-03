@@ -1,8 +1,8 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import Layout from '../components/Layout';
-import ColumnLayout from '../components/ColumnLayout';
+import Layout from '../../components/Layout';
+import ColumnLayout from '../../components/ColumnLayout';
 
 const PartnersPage = () => {
   const data = useStaticQuery(graphql`
