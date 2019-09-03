@@ -1,6 +1,6 @@
 import React from 'react';
-import Layout from '../components/Layout';
-import ColumnLayout from '../components/ColumnLayout';
+import Layout from '../../components/Layout';
+import ColumnLayout from '../../components/ColumnLayout';
 
 const ContactsPage = () => {
   const dataPhons = [
