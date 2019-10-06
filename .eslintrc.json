@@ -9,7 +9,7 @@
   },
   "settings": {
     "react": {
-      "version": "^16.8.6"
+      "version": "detect"
     }
   },
   "extends": [
@@ -24,16 +24,9 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "jsx-a11y",
-    "react-hooks"
-  ],
+  "plugins": ["react", "jsx-a11y", "react-hooks"],
   "rules": {
-    "semi": [
-      "error",
-      "always"
-    ],
+    "semi": ["error", "always"],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn"
   }
