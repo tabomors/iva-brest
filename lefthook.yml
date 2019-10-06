@@ -3,5 +3,7 @@ pre-commit:
   commands:
     linter:
       files: git diff --name-only @{push}
-      glob: "*.js"
+      glob: '*.js'
       run: npx eslint {files}
+    format:
+      run: npx pretty-quick --staged

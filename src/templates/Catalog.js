@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
+import Layout from '../components/Layout';
 
 const Catalog = ({
   data: {
@@ -8,20 +9,22 @@ const Catalog = ({
   },
 }) => {
   const nodes = edges.map(({ node }) => node);
-  if (!nodes.length) return <p>На данный момент нет экземпляров этой категории</p>;
+  if (!nodes.length)
+    return <p>На данный момент нет экземпляров этой категории</p>;
 
   return (
-    <ul>
-      {nodes.map(node => {
-        return (
-          <li key={node.id}>
-            <pre>{JSON.stringify(node, null, '\t')}</pre>
-            {/* TODO: replace it with gatsby-image in the future */}
-            <img src={node.picture.file.url} alt={node.name} width={300} />
-          </li>
-        );
-      })}
-    </ul>
+    <Layout>
+      <ul>
+        {nodes.map(node => {
+          return (
+            <li key={node.id}>
+              {/* TODO: replace it with gatsby-image in the future */}
+              <img src={node.picture.file.url} alt={node.name} width={300} />
+            </li>
+          );
+        })}
+      </ul>
+    </Layout>
   );
 };
 

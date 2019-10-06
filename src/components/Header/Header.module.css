@@ -18,3 +18,11 @@
   align-items: center;
   justify-content: space-around;
 }
+
+.menu-item:hover {
+  text-decoration: underline;
+}
+
+.menu-item-active {
+  text-decoration: underline;
+}

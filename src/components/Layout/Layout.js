@@ -4,13 +4,11 @@ import Header from '../Header';
 import Footer from '../Footer';
 import styles from './Layout.module.css';
 
-const data = ['о нас', 'каталог', 'партнеры', 'контакты'];
-
 const Layout = ({ children }) => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <Header menu={data} />
+        <Header />
         <div>{children}</div>
       </div>
       <Footer />
@@ -19,7 +17,7 @@ const Layout = ({ children }) => {
 };
 
 Layout.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Layout;
