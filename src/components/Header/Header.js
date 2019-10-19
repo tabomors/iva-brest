@@ -27,6 +27,7 @@ const HeaderDataQuery = graphql`
 
 const Header = () => {
   const { file, site } = useStaticQuery(HeaderDataQuery);
+  console.log('file.childImageSharp.fixed', file.childImageSharp.fixed);
   return (
     <header className={styles.mainHeader}>
       <Link to="/">

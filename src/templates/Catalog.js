@@ -2,28 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
+import CatalogLayout from '../components/CatalogLayout';
 
-const Catalog = ({
-  data: {
-    allContentfulProduct: { edges },
-  },
-}) => {
-  const nodes = edges.map(({ node }) => node);
-  if (!nodes.length)
+const Catalog = props => {
+  console.log('location', props);
+  const {
+    data: {
+      allContentfulProduct: { edges },
+    },
+    pageContext: { categories },
+  } = props;
+
+  const products = edges.map(({ node }) => node);
+  if (!products.length)
     return <p>На данный момент нет экземпляров этой категории</p>;
 
   return (
     <Layout>
-      <ul>
-        {nodes.map(node => {
-          return (
-            <li key={node.id}>
-              {/* TODO: replace it with gatsby-image in the future */}
-              <img src={node.picture.file.url} alt={node.name} width={300} />
-            </li>
-          );
-        })}
-      </ul>
+      <CatalogLayout
+        categories={categories}
+        products={products}
+      ></CatalogLayout>
     </Layout>
   );
 };
@@ -52,12 +51,17 @@ Catalog.propTypes = {
 };
 
 export const query = graphql`
-  query GetProducts($slug: String) {
-    allContentfulProduct(filter: { category: { eq: $slug } }) {
+  query Catalog($category: String, $seasons: [String!]) {
+    allContentfulProduct(
+      filter: { category: { eq: $category }, seasons: { in: $seasons } }
+    ) {
       edges {
         node {
           name
           picture {
+            fixed(width: 250) {
+              ...GatsbyContentfulFixed_noBase64
+            }
             file {
               fileName
               url
@@ -65,6 +69,7 @@ export const query = graphql`
           }
           id
           category
+          seasons
           slug
         }
       }
