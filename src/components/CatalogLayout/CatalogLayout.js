@@ -1,8 +1,31 @@
 import React from 'react';
 import styles from './CatalogLayout.module.css';
 import translateCategory from '../../utils/translateCategory';
-import { Link } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 import Img from 'gatsby-image';
+
+const SeasonSelect = ({ activeSeason }) => {
+  return (
+    <select
+      className={styles.seasonSelect}
+      name="seasonSelector"
+      id="seasonSelector"
+      value={activeSeason}
+      onBlur={() => {}}
+      onChange={e => {
+        navigate(`/catalog/${e.target.value}`);
+      }}
+    >
+      <option value="">
+        {activeSeason ? 'Все сезоны' : 'Выберите сезон:'}
+      </option>
+      <option value="spring">Весна</option>
+      <option value="winter">Зима</option>
+      <option value="summer">Лето</option>
+      <option value="autumn">Осень</option>
+    </select>
+  );
+};
 
 const CatalogLayout = ({ categories, products, activeSeason }) => {
   return (
@@ -31,6 +54,9 @@ const CatalogLayout = ({ categories, products, activeSeason }) => {
         </nav>
       </aside>
       <div className={styles.content}>
+        <div className={styles.seasonSelectWrapper}>
+          <SeasonSelect activeSeason={activeSeason} />
+        </div>
         <ul className={styles.productsList}>
           {products.map(node => {
             return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { graphql, navigate } from 'gatsby';
+import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import CatalogLayout from '../components/CatalogLayout';
 
@@ -20,23 +20,6 @@ const Catalog = props => {
 
   return (
     <Layout>
-      <select
-        name="seasonSelector"
-        id="seasonSelector"
-        value={activeSeason}
-        onBlur={() => {}}
-        onChange={e => {
-          navigate(`/catalog/${e.target.value}`);
-        }}
-      >
-        <option value="">
-          {activeSeason ? 'Все сезоны' : 'Выберите сезон:'}
-        </option>
-        <option value="spring">Весна</option>
-        <option value="winter">Зима</option>
-        <option value="summer">Лето</option>
-        <option value="autumn">Осень</option>
-      </select>
       <CatalogLayout
         activeSeason={activeSeason}
         categories={categories}
