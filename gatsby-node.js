@@ -1,13 +1,22 @@
 const path = require('path');
 
+// Utils:
 const getNodes = edges => {
   return edges.map(({ node }) => node);
 };
 
 const getCategories = nodes => {
-  return nodes.map(({ category }) => category);
+  return [...new Set(nodes.map(({ category }) => category))];
 };
 
+const getSeasonCategories = (products, season) => {
+  const seasonCategories = getCategories(
+    products.filter(({ seasons }) => seasons.includes(season))
+  );
+  return seasonCategories;
+};
+
+// Creating every possible static page:
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
@@ -40,6 +49,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const products = getNodes(edges);
 
   const categories = getCategories(products);
+
   const catalogTemplate = path.resolve('./src/templates/Catalog.js');
 
   // Render all categories page
@@ -66,11 +76,14 @@ exports.createPages = async ({ graphql, actions }) => {
   // Render each season (e.g /winter, /summer)
   const SEASONS = ['winter', 'spring', 'summer', 'autumn'];
   SEASONS.forEach(season => {
+    // Render only those categories that correspond to the given season
+    // For example: if there are no skirts for winter season, UI will not show it
+    const seasonCategories = getSeasonCategories(products, season);
     createPage({
       component: catalogTemplate,
       path: `/catalog/${season}/`,
       context: {
-        categories,
+        categories: seasonCategories,
         seasons: [season],
       },
     });
@@ -79,12 +92,16 @@ exports.createPages = async ({ graphql, actions }) => {
   // Render each season + category page (e.g. /winter/jacket, /summer/skirt)
   products.forEach(({ category, seasons }) => {
     seasons.forEach(season => {
+      // Render only those categories that correspond to the given season
+      // For example: if there are no skirts for winter season, UI will not show it
+      const seasonCategories = getSeasonCategories(products, season);
+
       createPage({
         component: catalogTemplate,
         path: `/catalog/${season}/${category}/`,
         context: {
           category,
-          categories,
+          categories: seasonCategories,
           seasons,
         },
       });

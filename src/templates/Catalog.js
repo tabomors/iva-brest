@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
+import { graphql, navigate } from 'gatsby';
 import Layout from '../components/Layout';
 import CatalogLayout from '../components/CatalogLayout';
 
@@ -10,16 +10,35 @@ const Catalog = props => {
     data: {
       allContentfulProduct: { edges },
     },
-    pageContext: { categories },
+    pageContext: { categories, seasons = [''] },
   } = props;
-
   const products = edges.map(({ node }) => node);
   if (!products.length)
     return <p>На данный момент нет экземпляров этой категории</p>;
 
+  const activeSeason = seasons[0];
+
   return (
     <Layout>
+      <select
+        name="seasonSelector"
+        id="seasonSelector"
+        value={activeSeason}
+        onBlur={() => {}}
+        onChange={e => {
+          navigate(`/catalog/${e.target.value}`);
+        }}
+      >
+        <option value="">
+          {activeSeason ? 'Все сезоны' : 'Выберите сезон:'}
+        </option>
+        <option value="spring">Весна</option>
+        <option value="winter">Зима</option>
+        <option value="summer">Лето</option>
+        <option value="autumn">Осень</option>
+      </select>
       <CatalogLayout
+        activeSeason={activeSeason}
         categories={categories}
         products={products}
       ></CatalogLayout>

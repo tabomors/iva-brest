@@ -4,17 +4,20 @@ import translateCategory from '../../utils/translateCategory';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 
-const CatalogLayout = ({ categories, products }) => {
+const CatalogLayout = ({ categories, products, activeSeason }) => {
   return (
     <div className={styles.container}>
       <aside className={styles.sidebar}>
         <nav>
           <ul>
             {categories.map(category => {
+              const to = activeSeason
+                ? `/catalog/${activeSeason}/${category}`
+                : `/catalog/${category}`;
               return (
                 <li key={category} className={styles.menuItem}>
                   <Link
-                    to={`/catalog/${category}`}
+                    to={to}
                     activeClassName={styles.active}
                     partiallyActive={true}
                     className={styles.menuLink}
