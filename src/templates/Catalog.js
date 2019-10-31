@@ -5,7 +5,6 @@ import Layout from '../components/Layout';
 import CatalogLayout from '../components/CatalogLayout';
 
 const Catalog = props => {
-  console.log('location', props);
   const {
     data: {
       allContentfulProduct: { edges },
