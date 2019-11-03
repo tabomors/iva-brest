@@ -61,7 +61,7 @@ const CatalogLayout = ({ categories, products, activeSeason }) => {
           {products.map(node => {
             return (
               <li key={node.id} className={styles.productsItem}>
-                <Link to={`/product/${node.slug}`}>
+                <Link to={`/catalog/product/${node.slug}`}>
                   <Img fixed={node.picture.fixed} alt={node.name} />
                 </Link>
               </li>
