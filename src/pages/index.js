@@ -1,9 +1,8 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import Carousel from 'nuka-carousel';
 import { useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
 import SeasonsMenu from '../components/SeasonsMenu';
+import Slider from '../components/Slider';
 
 const SliderDataQuery = graphql`
   query SliderData {
@@ -13,7 +12,7 @@ const SliderDataQuery = graphql`
           childImageSharp {
             id
             fixed(width: 315) {
-              ...GatsbyImageSharpFixed_noBase64
+              ...GatsbyImageSharpFixed_tracedSVG
             }
           }
         }
@@ -37,18 +36,6 @@ const SliderDataQuery = graphql`
     }
   }
 `;
-
-const Slider = ({ images }) => {
-  return (
-    <Carousel slidesToShow={3} enableKeyboardControls>
-      {images.map(({ fixed, id }) => (
-        <div key={id}>
-          <Img fixed={fixed} alt="Slider image" />
-        </div>
-      ))}
-    </Carousel>
-  );
-};
 
 const IndexPage = () => {
   const {
