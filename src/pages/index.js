@@ -11,7 +11,7 @@ const SliderDataQuery = graphql`
         node {
           childImageSharp {
             id
-            fixed(width: 315) {
+            fixed(width: 315, fit: CONTAIN, height: 500, background: "white") {
               ...GatsbyImageSharpFixed_tracedSVG
             }
           }
