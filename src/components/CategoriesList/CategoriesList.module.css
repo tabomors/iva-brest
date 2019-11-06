@@ -1,0 +1,9 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  font-size: 2rem;
+  padding: 20px 100px;
+}
