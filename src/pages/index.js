@@ -1,12 +1,15 @@
 import React from 'react';
-import Layout from '../components/Layout';
 import { graphql } from 'gatsby';
+
+import Layout from '../components/Layout';
 import SeasonsMenu from '../components/SeasonsMenu';
 import Slider from '../components/Slider';
 import CategoriesList from '../components/CategoriesList';
+import Banner from '../components/Banner';
 
 const IndexPage = ({
   data: {
+    bannerImage,
     sliderImages: { edges },
     randomPicture1,
     randomPicture2,
@@ -19,6 +22,7 @@ const IndexPage = ({
   );
   return (
     <Layout>
+      <Banner image={bannerImage.childImageSharp.fluid} />
       <CategoriesList categories={uniqCategories} />
       <Slider images={images} />
       <SeasonsMenu
@@ -51,6 +55,14 @@ const IndexPage = ({
 
 export const query = graphql`
   query HomePageData {
+    bannerImage: file(relativePath: { eq: "other/banner.jpg" }) {
+      childImageSharp {
+        id
+        fluid(maxWidth: 1400, maxHeight: 600, fit: COVER) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
     sliderImages: allFile(filter: { relativeDirectory: { eq: "slider" } }) {
       edges {
         node {
